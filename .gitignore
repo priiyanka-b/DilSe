@@ -1,0 +1,27 @@
+# ---- Raw data: download from the original sources (see README) ----
+data/raw/
+
+# ---- Large or restricted derived data ----
+# PTB-XL signal arrays (up to 2 GB; regenerate with prepare_data.py)
+data/processed/*.npy
+data/processed/age_100hz.npz
+# Day-level PMData (CC BY-NC 4.0) and per-person MMASH values (ODbL): not redistributed
+data/processed/pmdata_daily.csv
+data/processed/mmash_hrv.csv
+# Per-person plots and parameters of real PMData participants
+outputs/wearables/
+outputs/recipe/per_person_dynamics.csv
+# Saliency maps (51 MB; regenerate with saliency.py)
+outputs/saliency/*.npy
+
+# ---- Python / tool caches ----
+__pycache__/
+*.pyc
+.pytest_cache/
+pytest-cache-files-*/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Old files to delete by hand
+_to_delete/

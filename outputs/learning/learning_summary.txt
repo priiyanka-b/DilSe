@@ -1,0 +1,29 @@
+==============================================================================
+LEARNING TWIN (D-24): tuning on cohort A, synthetic, validation patients
+==============================================================================
+low_risk   threshold 0.60, k = 3: FA/month 0.32 (budget 0.33), learning-phase detection 85.4%
+high_risk  threshold 0.45, k = 3: FA/month 0.56 (budget 0.66), learning-phase detection 92.0%
+
+==============================================================================
+CHECK ON COHORT B (synthetic, seed 2402, not used for tuning)
+==============================================================================
+R1 learning-phase false alarms: 0.49 per patient-month (rule <= 0.60) -> PASS
+
+Detection within 14 days of episode start (episodes start days 10-28):
+system                                 +3     +5     +8    +12    mean
+current (locked, blind before day 35)   7.1%  11.0%  14.5%  11.4%   11.0%
+with learning twin (D-24)           58.2%  91.4%  98.6% 100.0%   87.1%
+R2 gain in mean detection: +76.1 points (rule >= +20) -> PASS
+Median delay with the learning twin (days): +3 bpm 6, +5 bpm 5, +8 bpm 4, +12 bpm 4
+
+==============================================================================
+REAL PEOPLE (PMData): learning phase = each person's first 35 days, 3 measures
+==============================================================================
+People 16, scored days 430 (= 14.3 person-months); every alarm counted as false
+low_risk     4 alarms = 0.28 per person-month (rule <= 0.66) -> PASS
+high_risk    7 alarms = 0.49 per person-month (rule <= 1.31) -> PASS
+R3 -> PASS
+
+ALL RULES PASS: learning-phase alarms are switched on (D-24).
+
+Saved outputs/learning/learning_config.json, learning_summary.txt and charts in outputs/learning

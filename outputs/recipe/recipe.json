@@ -1,0 +1,221 @@
+{
+  "created": "by fit_recipe.py",
+  "decisions": [
+    "D-13",
+    "D-14",
+    "D-14a",
+    "D-15"
+  ],
+  "levels": {
+    "resting_hr_bpm": {
+      "distribution": "normal, by sex",
+      "female": {
+        "mean": {
+          "value": 67.5,
+          "source": "derived from Quer et al. 2020 (PLOS ONE), Results: 95% of women 53-82 bpm"
+        },
+        "sd": {
+          "value": 7.4,
+          "source": "derived: (82-53)/3.92, assumes a normal distribution"
+        }
+      },
+      "male": {
+        "mean": {
+          "value": 65.0,
+          "source": "derived from Quer et al. 2020 (PLOS ONE), Results: 95% of men 50-80 bpm"
+        },
+        "sd": {
+          "value": 7.65,
+          "source": "derived: (80-50)/3.92, assumes a normal distribution"
+        }
+      },
+      "cross_check": {
+        "value": "65.5 +/- 7.7",
+        "source": "Quer et al. 2020, Results: mean RHR over all individuals and days"
+      },
+      "age_effect": {
+        "value": null,
+        "source": "not applied",
+        "note": "Quer et al. 2020 report a rise to about age 50 then a decline (Fig. 3A), but give no numeric values"
+      }
+    },
+    "steps_per_day": {
+      "distribution": "log-normal",
+      "mu_log": {
+        "value": 8.201,
+        "source": "derived from mean 4,297 and SD 2,684"
+      },
+      "sigma_log": {
+        "value": 0.5739,
+        "source": "derived from mean 4,297 and SD 2,684"
+      },
+      "mean": {
+        "value": 4297,
+        "source": "Althoff et al. 2017 (Nature), Supplementary Table 1: India"
+      },
+      "sd": {
+        "value": 2684,
+        "source": "Althoff et al. 2017 (Nature), Methods: SD across all users worldwide"
+      },
+      "note": "smartphone-measured; phones typically record fewer steps than wrist trackers",
+      "age_effect": {
+        "value": null,
+        "source": "not applied",
+        "note": "Althoff et al. 2017 report lower activity with age (Extended Data Fig. 1) without values in the text retrieved"
+      }
+    },
+    "sleep_hours": {
+      "distribution": "normal",
+      "mean": {
+        "value": 6.777,
+        "source": "PMData (computed): mean of 14 personal mean sleep durations"
+      },
+      "sd": {
+        "value": 0.567,
+        "source": "PMData (computed): SD across those people"
+      },
+      "note": "placeholder until Ohayon et al. 2004 (Sleep) age norms are verified"
+    },
+    "hrv_rmssd_ms": {
+      "distribution": "log-normal",
+      "mu_log": {
+        "value": 4.0468,
+        "source": "MMASH (computed): mean log night RMSSD of 20 users"
+      },
+      "sigma_log": {
+        "value": 0.278,
+        "source": "MMASH (computed): SD of log night RMSSD"
+      },
+      "median_ms": {
+        "value": 57.4,
+        "source": "MMASH (computed)"
+      },
+      "note": "young healthy men only; age adjustment awaits verification of Umetani et al. 1998 (JACC)"
+    }
+  },
+  "dynamics": {
+    "resting_hr_bpm": {
+      "unit": "bpm",
+      "phi": {
+        "value": 0.861,
+        "source": "PMData (computed): 13 people with >= 60 valid days, median lag-1 autocorrelation"
+      },
+      "sd": {
+        "value": 2.0436,
+        "source": "PMData (computed): 13 people with >= 60 valid days, median residual SD"
+      },
+      "sd_log_spread": {
+        "value": 0.304,
+        "source": "PMData (computed): 13 people with >= 60 valid days, SD of log(residual SD) across people"
+      },
+      "weekday": {
+        "value": {
+          "Mon": -0.0816,
+          "Tue": -0.2756,
+          "Wed": -0.1816,
+          "Thu": -0.286,
+          "Fri": 0.1477,
+          "Sat": 0.3405,
+          "Sun": 0.3591
+        },
+        "source": "PMData (computed): 13 people with >= 60 valid days, mean weekday deviation"
+      }
+    },
+    "sleep_hours": {
+      "unit": "hours",
+      "phi": {
+        "value": 0.041,
+        "source": "PMData (computed): 14 people with >= 60 valid days, median lag-1 autocorrelation"
+      },
+      "sd": {
+        "value": 1.0429,
+        "source": "PMData (computed): 14 people with >= 60 valid days, median residual SD"
+      },
+      "sd_log_spread": {
+        "value": 0.292,
+        "source": "PMData (computed): 14 people with >= 60 valid days, SD of log(residual SD) across people"
+      },
+      "weekday": {
+        "value": {
+          "Mon": -0.0581,
+          "Tue": -0.0358,
+          "Wed": -0.0913,
+          "Thu": -0.0493,
+          "Fri": -0.1221,
+          "Sat": 0.2563,
+          "Sun": 0.1294
+        },
+        "source": "PMData (computed): 14 people with >= 60 valid days, mean weekday deviation"
+      }
+    },
+    "steps_per_day": {
+      "unit": "log steps",
+      "phi": {
+        "value": 0.14,
+        "source": "PMData (computed): 12 people with >= 60 valid days, median lag-1 autocorrelation"
+      },
+      "sd": {
+        "value": 0.3179,
+        "source": "PMData (computed): 12 people with >= 60 valid days, median residual SD"
+      },
+      "sd_log_spread": {
+        "value": 0.2,
+        "source": "PMData (computed): 12 people with >= 60 valid days, SD of log(residual SD) across people"
+      },
+      "weekday": {
+        "value": {
+          "Mon": -0.0148,
+          "Tue": -0.004,
+          "Wed": 0.0,
+          "Thu": 0.0346,
+          "Fri": 0.0158,
+          "Sat": 0.0353,
+          "Sun": -0.0861
+        },
+        "source": "PMData (computed): 12 people with >= 60 valid days, mean weekday deviation"
+      }
+    },
+    "hrv_rmssd_ms": {
+      "unit": "log ms",
+      "sd": {
+        "value": 0.3582,
+        "source": "derived from Hannon et al. 2025 (Sensors 25(14):4415), Section 4: average 14-day CV of RMSSD 0.37",
+        "note": "morning 5-min readings, while our HRV levels are night-time (MMASH); a known mismatch"
+      },
+      "sd_log_spread": {
+        "value": null,
+        "source": "not estimated",
+        "note": "Hannon et al. 2025 report only the CV mean (0.37), SD (0.16) and range (0.14-0.71); the simulator uses the resting HR spread as a stand-in"
+      },
+      "phi": {
+        "value": 0.861,
+        "source": "ASSUMPTION (conservative): borrowed from PMData resting HR memory",
+        "note": "no source found for night-to-night HRV memory; a high value makes natural drifts longer and so makes detection harder, not easier"
+      },
+      "weekday": {
+        "value": {
+          "Mon": 0.0,
+          "Tue": 0.0,
+          "Wed": 0.0,
+          "Thu": 0.0,
+          "Fri": 0.0,
+          "Sat": 0.0,
+          "Sun": 0.0
+        },
+        "source": "ASSUMPTION: no weekday effect for HRV"
+      }
+    }
+  },
+  "licences": {
+    "PMData": "CC BY-NC 4.0 (only these summary numbers are used; raw data not redistributed)",
+    "MMASH": "ODbL v1.0",
+    "Quer et al. 2020": "CC BY (article)",
+    "Althoff et al. 2017": "Nature article; numbers cited, not reproduced"
+  },
+  "open_gaps": [
+    "HRV day-to-day memory (phi): ASSUMED equal to resting HR memory; no source found",
+    "HRV age adjustment: awaiting Umetani et al. 1998 full text",
+    "Sleep level by age: awaiting Ohayon et al. 2004 values",
+    "Age effects on resting HR and steps: sources give direction only"
+  ]
+}

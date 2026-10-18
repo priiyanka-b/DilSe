@@ -1,0 +1,11 @@
+# Calm clinical theme for the doctor dashboard (D-22)
+[theme]
+base = "light"
+primaryColor = "#1C5D7A"
+backgroundColor = "#F6F8FA"
+secondaryBackgroundColor = "#EAEFF3"
+textColor = "#1D2733"
+font = "sans serif"
+
+[client]
+toolbarMode = "minimal"

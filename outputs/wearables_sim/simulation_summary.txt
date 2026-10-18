@@ -1,0 +1,15 @@
+val: 2137 patients x 60 days | with episode 1066 (49.9%) | severity counts {1: 255, 2: 287, 3: 259, 4: 265}
+test: 2145 patients x 60 days | with episode 1071 (49.9%) | severity counts {1: 269, 2: 252, 3: 268, 4: 282}
+
+Episode share by ECG label (should be about equal): normal 0.490 | abnormal 0.505
+
+Simulated levels (validation, day 0-34, before any episode): resting HR median 66.5 bpm | HRV median 57.1 ms | sleep median 6.79 h | steps median 3597
+
+REALISM CHECK: clean simulated patients vs real PMData (day-to-day behaviour)
+measure       real SD of change  sim SD of change  real memory  sim memory
+resting_hr                1.175             1.208         0.86        0.80
+sleep_hours               1.819             1.586         0.01        0.01
+log_steps                 0.496             0.435         0.14        0.11
+Note: the recipe was fitted on PMData, so this is a consistency check, not independent validation.
+
+Saved wearables_val/test.csv, episodes_val/test.csv and two PNGs in outputs\wearables_sim

@@ -1,0 +1,17 @@
+{
+  "locked_on": "validation patients",
+  "risk_threshold_p_ecg": 0.510543,
+  "risk_threshold_rule": "90% specificity on validation",
+  "total_fa_budget": 0.5,
+  "high_to_low_ratio": 2.0,
+  "low_risk": {
+    "threshold": 0.7,
+    "persistence": 4,
+    "fa_budget": 0.3282642089093702
+  },
+  "high_risk": {
+    "threshold": 0.55,
+    "persistence": 3,
+    "fa_budget": 0.6565284178187404
+  }
+}

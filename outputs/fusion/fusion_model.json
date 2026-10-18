@@ -1,0 +1,21 @@
+{
+  "inputs": [
+    "ecg_logodds",
+    "age_decades",
+    "sex"
+  ],
+  "age_centre": 60.0,
+  "intercept": 0.13699007034074664,
+  "coefficients": {
+    "ecg_logodds": 0.8194835968944589,
+    "age_decades": 0.17543029577188693,
+    "sex": -0.21425615350730948
+  },
+  "static_only": {
+    "intercept": 0.726050628359825,
+    "coefficients": {
+      "age_decades": 0.5308604030490802,
+      "sex": -0.7777664554892202
+    }
+  }
+}

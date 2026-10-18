@@ -1,0 +1,17 @@
+==============================================================================
+LOCKED MONITOR ON REAL PEOPLE (PMData, 3 measures, no labelled episodes)
+==============================================================================
+People with at least one scored monitored day: 15 of 16
+Scored monitored days: 1330 (= 44.3 person-months)
+
+All alarms counted as false (upper bound):
+setting                    thr  k  alarms  per person-month  synthetic budget  people with >=1
+uniform (D-17)            0.50  4      28              0.63              0.50         12 of 15
+low-risk tier (D-18)      0.70  4      22              0.50              0.33         12 of 15
+high-risk tier (D-18)     0.55  3      40              0.90              0.66         13 of 15
+
+Per person (uniform setting): p01 2/116d, p02 3/108d, p03 0/39d, p04 0/38d, p05 1/101d, p06 3/116d, p07 6/111d, p08 2/104d, p09 2/108d, p10 1/73d, p11 1/88d, p13 0/7d, p14 2/96d, p15 2/109d, p16 3/116d
+
+Caveats: PMData was used to fit the simulation recipe (not independent); no HRV; some alarms may be real events that cannot be verified.
+
+Saved outputs\real_check\per_person.csv, outputs\real_check\example_real_person.png

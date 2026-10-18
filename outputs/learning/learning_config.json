@@ -1,0 +1,20 @@
+{
+  "locked_on": "synthetic early-episode cohort A (validation patients, seed 2401)",
+  "decision": "D-24",
+  "prior_sd_days": 10,
+  "learning_days": [
+    0,
+    34
+  ],
+  "low_risk": {
+    "threshold": 0.6,
+    "persistence": 3,
+    "fa_budget": 0.3282642089093702
+  },
+  "high_risk": {
+    "threshold": 0.45,
+    "persistence": 3,
+    "fa_budget": 0.6565284178187404
+  },
+  "alarms_enabled": true
+}

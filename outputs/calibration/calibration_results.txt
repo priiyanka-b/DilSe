@@ -1,0 +1,38 @@
+========================================================================
+CALIBRATION ON VALIDATION (test set untouched)
+========================================================================
+Patients 2137 | actual abnormal rate 0.576
+
+Model                            Brier     ECE  LogLoss  Mean pred
+Static only (age + sex)         0.1983  0.0277   0.5804      0.584
+ECG only (4-CNN ensemble)       0.0963  0.0287   0.3052      0.547
+Fused (ECG + age + sex)         0.0970  0.0290   0.3068      0.554
+
+Brier difference fused - ECG: +0.00066 (95% bootstrap CI -0.00092 to +0.00224); negative means fused is better
+Pre-agreed rule (fused unless its Brier is worse): FINAL MODEL = ECG-ONLY ENSEMBLE
+
+Reliability table (equal-width bins; mean predicted vs actual abnormal rate):
+  ECG only (4-CNN ensemble)
+    predicted  0.05 | actual  0.05 | n= 451 | gap +0.00
+    predicted  0.14 | actual  0.21 | n= 228 | gap +0.06
+    predicted  0.25 | actual  0.32 | n= 131 | gap +0.07
+    predicted  0.34 | actual  0.35 | n=  99 | gap +0.01
+    predicted  0.45 | actual  0.51 | n= 102 | gap +0.06
+    predicted  0.55 | actual  0.61 | n=  98 | gap +0.06
+    predicted  0.66 | actual  0.74 | n=  80 | gap +0.08
+    predicted  0.75 | actual  0.80 | n=  82 | gap +0.06
+    predicted  0.85 | actual  0.90 | n= 114 | gap +0.05
+    predicted  0.98 | actual  0.99 | n= 752 | gap +0.01
+  Fused (ECG + age + sex)
+    predicted  0.05 | actual  0.03 | n= 369 | gap -0.02
+    predicted  0.15 | actual  0.16 | n= 247 | gap +0.02
+    predicted  0.25 | actual  0.26 | n= 156 | gap +0.01
+    predicted  0.34 | actual  0.45 | n= 119 | gap +0.11
+    predicted  0.45 | actual  0.48 | n= 115 | gap +0.03
+    predicted  0.55 | actual  0.57 | n=  95 | gap +0.02
+    predicted  0.65 | actual  0.68 | n= 103 | gap +0.03
+    predicted  0.75 | actual  0.84 | n=  89 | gap +0.09
+    predicted  0.85 | actual  0.93 | n= 127 | gap +0.07
+    predicted  0.98 | actual  0.99 | n= 717 | gap +0.01
+
+Saved outputs\calibration\reliability_diagram.png

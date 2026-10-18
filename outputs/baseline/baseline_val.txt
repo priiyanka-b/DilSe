@@ -1,0 +1,10 @@
+COMPARISON ON VALIDATION (synthetic wearables and episodes)
+method                                           FA/month | +3 bpm  +5 bpm  +8 bpm  +12 bpm | mean
+Simple rule: RHR >= normal + 10 bpm, 3 days          0.01 |   1.6%    4.9%   23.2%   85.7% | 28.8%
+                                                 settings: fixed in advance
+Simple rule: RHR >= normal + 5 bpm, 3 days           0.10 |  29.0%   65.2%   93.8%   98.9% | 71.7%
+                                                 settings: fixed in advance
+Resting-HR-only monitor (tuned like D-17)            0.49 |  74.1%   86.8%   98.1%   99.2% | 89.5%
+                                                 settings: threshold 1.60, k 3
+Our monitor, 4 measures (D-17, locked)               0.50 |  74.5%   90.2%   95.8%   99.6% | 90.0%
+                                                 settings: threshold 0.50, k 4

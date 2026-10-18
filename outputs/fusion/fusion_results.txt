@@ -1,0 +1,22 @@
+========================================================================
+VALIDATION RESULTS (test set untouched)
+========================================================================
+Model                              AUROC   AUPRC  Sens@90%Spec
+static_only_age_sex                0.755   0.799         0.386
+ecg_only_crossfit_ensemble         0.942   0.960         0.835
+fused_ecg_age_sex                  0.941   0.960         0.823
+(reference) single plain CNN       0.940   0.958         0.829   from D-9/D-10 log
+Chance AUPRC (abnormal share of validation): 0.576
+
+Fusion gain over ECG-only ensemble: -0.0007 AUROC (95% bootstrap CI -0.0025 to +0.0010, 2000 resamples)
+Pre-agreed rule (CI entirely above 0): fusion NO measurable difference
+
+Fused model, logistic regression coefficients:
+  intercept                 +0.137
+  ecg_logodds               +0.819   (1.0 = take the CNN at face value; <1 = shrink it, >1 = stretch it)
+  age_decades               +0.175   -> each extra decade multiplies the odds by 1.19, same ECG
+  sex (1 vs 0)              -0.214   -> odds multiplied by 0.81, same ECG and age
+  Note: sex coding 0/1 is inferred as male/female, still to be confirmed (D-4 note).
+
+Static-only model coefficients:
+  age_decades +0.531 (odds x1.70 per decade) | sex -0.778 (odds x0.46)

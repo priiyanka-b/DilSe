@@ -1,0 +1,28 @@
+Training NORM ECGs: 7156  (age mean 52.8, SD 17.1)
+Validation NORM ECGs: 906
+epoch  1  train MAE 10.03  val NORM MAE 18.63  (19 s)
+epoch  2  train MAE  9.10  val NORM MAE  9.48  (18 s)
+epoch  3  train MAE  8.66  val NORM MAE  8.96  (18 s)
+epoch  4  train MAE  8.37  val NORM MAE  8.27  (19 s)
+epoch  5  train MAE  8.17  val NORM MAE  8.26  (19 s)
+epoch  6  train MAE  8.00  val NORM MAE  9.09  (17 s)
+epoch  7  train MAE  7.83  val NORM MAE  8.04  (18 s)
+epoch  8  train MAE  7.68  val NORM MAE  8.44  (18 s)
+epoch  9  train MAE  7.62  val NORM MAE  7.92  (17 s)
+epoch 10  train MAE  7.46  val NORM MAE  9.67  (17 s)
+epoch 11  train MAE  7.34  val NORM MAE  7.67  (17 s)
+epoch 12  train MAE  7.35  val NORM MAE  7.99  (17 s)
+epoch 13  train MAE  7.35  val NORM MAE  7.68  (17 s)
+epoch 14  train MAE  7.26  val NORM MAE 10.15  (17 s)
+epoch 15  train MAE  7.15  val NORM MAE  9.83  (18 s)
+epoch 16  train MAE  7.04  val NORM MAE  8.88  (17 s)
+early stop: no improvement for 5 epochs
+Best epoch 11: validation NORM MAE 7.67 years
+Bias correction (validation NORM): gap = 20.04 + -0.411 x age
+
+=== Test set (scored once) ===
+Test NORM ECGs: 909, abnormal: 1236
+R1 accuracy: MAE 7.85 years (rule <= 9.0); always-mean-age MAE 13.40, ratio 0.59 (rule <= 0.70); correlation 0.80  -> PASS
+R2 meaning: mean corrected gap abnormal -0.26, normal +0.53, difference -0.78 years (95% CI -1.49 to -0.09) -> FAIL
+Heart looks >= 5 years older: abnormal 25%, normal 25%
+Overall: FAIL -> not shown in the app (fallback)

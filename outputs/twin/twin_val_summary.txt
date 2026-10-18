@@ -1,0 +1,20 @@
+================================================================================
+TWIN STATE ON VALIDATION (ECG risk: real data | wearables and episodes: SYNTHETIC)
+================================================================================
+Step 1  risk threshold p_ecg >= 0.511 (90% specificity) -> 1118 high-risk (52.3%), 1019 low-risk
+Step 2  false-alarm budgets: low-risk 0.33, high-risk 0.66 per patient-month
+        low-risk settings  threshold 0.70, k 4
+        high-risk settings threshold 0.55, k 3
+
+Detection of synthetic episodes:            +3 bpm  +5 bpm  +8 bpm  +12 bpm
+  high-risk: uniform (D-17)          FA/month 0.47 |  72.3%   92.7%   95.7%  100.0% | mean 90.2%
+  high-risk: risk-adjusted (D-18)    FA/month 0.61 |  77.7%   94.7%   97.1%  100.0% | mean 92.4%
+  low-risk: uniform (D-17)           FA/month 0.53 |  76.8%   87.5%   95.9%   99.3% | mean 89.9%
+  low-risk: risk-adjusted (D-18)     FA/month 0.30 |  63.2%   80.9%   95.9%   99.3% | mean 84.8%
+  all: uniform (D-17)                FA/month 0.50 |  74.5%   90.2%   95.8%   99.6% | mean 90.0%
+  all: risk-adjusted (D-18)          FA/month 0.47 |  70.6%   88.2%   96.5%   99.6% | mean 88.7%
+
+Worst twin state per patient over days 35-59: STABLE 446 (20.9%), WATCH 931 (43.6%), ESCALATE 760 (35.6%)
+ESCALATE patients with an injected episode: 68.3%; with an abnormal ECG: 93.0%
+
+Limitation: episodes were assigned independently of the ECG, so these numbers show how alerts are redistributed, not that outcomes improve.

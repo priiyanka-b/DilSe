@@ -1,0 +1,6 @@
+# Dashboard (also what the free Streamlit Community Cloud installs). Python 3.10-3.12.
+numpy
+pandas
+matplotlib
+streamlit>=1.35      # clickable worklist rows need 1.35 or later
+altair

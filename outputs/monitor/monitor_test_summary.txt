@@ -1,0 +1,29 @@
+================================================================================
+PART 1  ECG RISK ON TEST (real PTB-XL data, fold 10, never used before)
+================================================================================
+Test patients 2145 | abnormal share 0.576 (= chance AUPRC)
+Model                                  AUROC [95% CI]           AUPRC [95% CI]       Sens@90%Spec [95% CI]
+Static only (age + sex)      0.755 [0.734-0.775]      0.804 [0.781-0.826]      0.436 [0.366-0.472]
+ECG only (FINAL MODEL)       0.938 [0.928-0.947]      0.959 [0.952-0.966]      0.816 [0.789-0.852]
+Fused (ECG + age + sex)      0.940 [0.931-0.949]      0.961 [0.955-0.967]      0.830 [0.795-0.858]
+
+At the LOCKED validation threshold p_ecg >= 0.511:
+  sensitivity 0.804 | specificity 0.912
+  confusion matrix: TN 829  FP 80  FN 242  TP 994
+Calibration of the final model: Brier 0.1011 | ECE 0.0378 | mean predicted 0.538 vs actual 0.576
+Per-fold-model AUROC on test: A 0.935, B 0.927, C 0.932, D 0.918
+
+================================================================================
+PART 2  WEARABLE MONITOR ON TEST (synthetic data, synthetic episodes, locked settings)
+================================================================================
+Using LOCKED settings from monitor_config.json (tuned on validation).
+==============================================================================
+MONITOR RESULTS ON TEST (synthetic wearable data; synthetic episodes)
+==============================================================================
+Constraint: at most 0.5 false alarms per patient-month
+method     thr  k  FA/month | detection rate by RHR rise (median delay, days)
+                           |   +3 bpm        +5 bpm        +8 bpm       +12 bpm
+fixed      1.1  1      0.44 | 65.1% (  5d)  84.5% (  4d)  96.6% (  3d)  99.6% (  2d)
+rolling    0.5  4      0.51 | 76.2% (  5d)  92.9% (  5d)  97.4% (  5d)  99.3% (  4d)
+
+Saved outputs\monitor\monitor_config.json and charts in outputs\monitor

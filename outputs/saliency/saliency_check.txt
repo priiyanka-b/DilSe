@@ -1,0 +1,7 @@
+SALIENCY (plain gradient, 4-CNN ensemble, test patients)
+Saved outputs\saliency\saliency_test.npy  shape (2145, 12, 1000)
+Max difference from locked test probabilities: 2.97e-08 (should be ~0)
+Model-randomisation check (200 patients): median correlation trained vs untrained map = 0.11 (IQR 0.05 to 0.16)
+Reading: a LOW correlation means the maps depend on what the model learned (good).
+A HIGH correlation (say above 0.7) means the maps mostly trace the ECG's own shape;
+in that case do not show them on the dashboard.

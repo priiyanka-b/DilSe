@@ -1,0 +1,36 @@
+========================================================================
+DAY-TO-DAY DYNAMICS FROM PMDATA (people with at least 60 valid days)
+========================================================================
+
+resting_hr  [linear scale]
+  people used: 13  ['p01', 'p02', 'p03', 'p05', 'p06', 'p07', 'p08', 'p09', 'p10', 'p11', 'p14', 'p15', 'p16']
+  excluded (< 60 days): p04 (35), p12 (0), p13 (0)
+  memory phi:  median 0.86  (range 0.64 to 0.94)
+  wobble sd:   median 2.044 bpm  (range 1.283 to 3.348)
+  weekday effect: Mon -0.082  Tue -0.276  Wed -0.182  Thu -0.286  Fri +0.148  Sat +0.340  Sun +0.359
+
+sleep_hours  [linear scale]
+  people used: 14  ['p01', 'p02', 'p03', 'p04', 'p05', 'p06', 'p07', 'p08', 'p09', 'p10', 'p11', 'p14', 'p15', 'p16']
+  excluded (< 60 days): p12 (8), p13 (51)
+  memory phi:  median 0.04  (range -0.20 to 0.16)
+  wobble sd:   median 1.043 hours  (range 0.720 to 1.943)
+  weekday effect: Mon -0.058  Tue -0.036  Wed -0.091  Thu -0.049  Fri -0.122  Sat +0.256  Sun +0.129
+
+steps  [log scale]
+  people used: 12  ['p01', 'p02', 'p04', 'p05', 'p06', 'p07', 'p08', 'p09', 'p10', 'p11', 'p12', 'p15']
+  excluded (< 60 days): p03 (33), p13 (44), p14 (46), p16 (33)
+  memory phi:  median 0.14  (range -0.14 to 0.37)
+  wobble sd:   median 0.318 log units (x100 = approx. %)  (range 0.267 to 0.510)
+  weekday effect: Mon -0.015  Tue -0.004  Wed +0.000  Thu +0.035  Fri +0.016  Sat +0.035  Sun -0.086
+
+========================================================================
+PERSONAL LEVELS (between-person)
+========================================================================
+Resting HR  women mean 67.5 sd 7.40 | men mean 65.0 sd 7.65 bpm  (Quer 2020, derived)
+Steps       log-normal, mean 4,297 sd 2,684  (Althoff 2017, India)
+Sleep       mean 6.78 h, sd 0.57 h across 14 PMData people (placeholder)
+HRV RMSSD   median 57.4 ms, log-sd 0.278 across 20 MMASH users
+
+OPEN GAPS: HRV day-to-day memory (phi): ASSUMED equal to resting HR memory; no source found; HRV age adjustment: awaiting Umetani et al. 1998 full text; Sleep level by age: awaiting Ohayon et al. 2004 values; Age effects on resting HR and steps: sources give direction only
+
+Saved outputs\recipe\recipe.json and outputs\recipe\per_person_dynamics.csv

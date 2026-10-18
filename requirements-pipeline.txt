@@ -1,0 +1,7 @@
+# Full pipeline: training, evaluation, checks and tests (Python 3.10; developed on 3.10.11, Windows, CPU only)
+-r requirements.txt
+scikit-learn
+torch            # training, final_evaluation.py and saliency.py
+wfdb             # reads PTB-XL signal files (prepare_data.py)
+openpyxl         # reads the PMData participant sheet (explore_wearables.py)
+pytest

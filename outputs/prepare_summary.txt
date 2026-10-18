@@ -1,0 +1,48 @@
+======================================================================
+STEP 1: LABELS (D-3)
+======================================================================
+Records loaded:                         21799
+Dropped, no diagnostic superclass:      411
+
+======================================================================
+STEP 2: POPULATION (D-4)
+======================================================================
+Ages recoded from 300 to 90:          285
+Dropped, under 18:                     133  (of which abnormal: 35)
+Records remaining:                      21255
+
+======================================================================
+STEP 3: SPLITS (folds 1-8 train, 9 val, 10 test)
+======================================================================
+train:  16973 records | normal  7156 | abnormal  9817 | abnormal share 57.8%
+val  :   2137 records | normal   906 | abnormal  1231 | abnormal share 57.6%
+test :   2145 records | normal   909 | abnormal  1236 | abnormal share 57.6%
+
+Patients in more than one split: 0  (OK, no leakage)
+
+======================================================================
+STEP 4: READING ECG SIGNALS (500 Hz)
+======================================================================
+train: saved data\processed\X_train.npy  shape (16973, 12, 5000)
+val  : saved data\processed\X_val.npy  shape (2137, 12, 5000)
+test : saved data\processed\X_test.npy  shape (2145, 12, 5000)
+
+Records with problems: 0
+
+======================================================================
+STEP 5: PER-LEAD MEAN / STD (TRAIN ONLY)
+======================================================================
+  I    mean -0.0017 mV   std 0.1903 mV
+  II   mean -0.0016 mV   std 0.1592 mV
+  III  mean +0.0002 mV   std 0.1660 mV
+  AVR  mean +0.0016 mV   std 0.1399 mV
+  AVL  mean -0.0009 mV   std 0.1457 mV
+  AVF  mean -0.0007 mV   std 0.1397 mV
+  V1   mean +0.0002 mV   std 0.2346 mV
+  V2   mean -0.0010 mV   std 0.3346 mV
+  V3   mean -0.0016 mV   std 0.3296 mV
+  V4   mean -0.0014 mV   std 0.2929 mV
+  V5   mean -0.0014 mV   std 0.2933 mV
+  V6   mean -0.0013 mV   std 0.2420 mV
+
+Done. Files in data/processed/: X_{train,val,test}.npy, meta_{train,val,test}.csv, norm_stats.json

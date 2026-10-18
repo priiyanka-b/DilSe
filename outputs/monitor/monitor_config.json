@@ -1,0 +1,21 @@
+{
+  "locked_on": "validation patients",
+  "max_fa_per_month": 0.5,
+  "smooth_days": 3,
+  "rolling_baseline_days": 28,
+  "rolling_gap_days": 7,
+  "fixed_baseline_days": [
+    0,
+    28
+  ],
+  "methods": {
+    "fixed": {
+      "threshold": 1.05,
+      "persistence": 1
+    },
+    "rolling": {
+      "threshold": 0.5,
+      "persistence": 4
+    }
+  }
+}

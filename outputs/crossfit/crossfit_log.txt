@@ -1,0 +1,23 @@
+{"seed": 42, "downsample": 5, "epochs": 11, "batch_size": 64, "learning_rate": 0.001, "widths": [32, 64, 128, 128], "kernel_size": 7, "groups": {"A": [1, 2], "B": [3, 4], "C": [5, 6], "D": [7, 8]}}
+Patients spanning more than one group: 0 (must be 0)
+  group A: 4253 ECGs
+  group B: 4255 ECGs
+  group C: 4229 ECGs
+  group D: 4236 ECGs
+
+=== Fold model A: trained WITHOUT group A, then scores group A ===
+Fold A: AUROC on its left-out group 0.949 | on validation 0.936 | 13.9 min
+
+=== Fold model B: trained WITHOUT group B, then scores group B ===
+Fold B: AUROC on its left-out group 0.939 | on validation 0.930 | 12.2 min
+
+=== Fold model C: trained WITHOUT group C, then scores group C ===
+Fold C: AUROC on its left-out group 0.949 | on validation 0.941 | 10.6 min
+
+=== Fold model D: trained WITHOUT group D, then scores group D ===
+Fold D: AUROC on its left-out group 0.940 | on validation 0.925 | 10.7 min
+
+=== Summary ===
+OOF AUROC over all training ECGs:      0.941
+Validation AUROC, average of 4 CNNs:  0.942
+Saved outputs/crossfit/oof_train.csv and val_scores.csv. Test set untouched.

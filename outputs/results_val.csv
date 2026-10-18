@@ -1,0 +1,7 @@
+experiment,best_epoch,val_auroc,val_auprc,val_sens_at_90spec,config
+plain_cnn,19,0.9377854648942066,0.9571685297326162,0.8245329000812348,"{""experiment"": ""plain_cnn"", ""seed"": 42, ""downsample"": 1, ""batch_size"": 64, ""epochs"": 20, ""learning_rate"": 0.001, ""patience"": 4, ""widths"": [32, 64, 128, 128], ""kernel_size"": 7}"
+plain_cnn_100Hz,11,0.9404614601097835,0.9576160608014148,0.8294069861900893,"{""experiment"": ""plain_cnn_100Hz"", ""seed"": 42, ""downsample"": 5, ""batch_size"": 64, ""epochs"": 20, ""learning_rate"": 0.001, ""patience"": 4, ""widths"": [32, 64, 128, 128], ""kernel_size"": 7}"
+resnet1d_100hz,9,0.941216871726176,0.9598131274481794,0.834281072298944,"{""experiment"": ""resnet1d_100hz"", ""model"": ""resnet"", ""seed"": 42, ""downsample"": 5, ""batch_size"": 64, ""epochs"": 20, ""learning_rate"": 0.001, ""patience"": 4, ""widths"": [32, 64, 128, 128], ""kernel_size"": 7}"
+static_only_age_sex,,0.7552829498442551,0.7994300562882862,0.38586515028432167,fuse.py (D-11)
+ecg_only_crossfit_ensemble,,0.9420964667358867,0.9601721883765226,0.8350934199837531,fuse.py (D-11)
+fused_ecg_age_sex,,0.9413854383539288,0.9596971069067197,0.8229082047116165,fuse.py (D-11)
