@@ -15,7 +15,7 @@ re-tuned here. All settings are read from the locked config files.
   wearable stream data/processed/wearables_test.csv          SYNTHETIC (D-13 to D-16)
   monitor         monitor.py (days 35-59, D-17) and learning_twin.py (days 0-34, D-24)
   twin settings   outputs/twin/twin_config.json, outputs/learning/learning_config.json
-  12-lead ECG     data/processed/X_test.npy if present, else data/demo/ecg_demo.npz (99 patients)
+  12-lead ECG     data/processed/X_test.npy if present, else data/demo/ecg_all.npz (all 2,145, 8-bit)
 Only TEST-split patients are shown: the model never saw them during development.
 
 The "Demo controls" replay the 60 simulated days. A real clinic would only ever see today.
@@ -42,7 +42,8 @@ PROC = Path("data/processed")
 FINAL = Path("outputs/final_test")
 TWIN_CFG = Path("outputs/twin/twin_config.json")
 LEARN_CFG = Path("outputs/learning/learning_config.json")
-DEMO_ECG = Path("data/demo/ecg_demo.npz")
+ALL_ECG = Path("data/demo/ecg_all.npz")      # every test patient, compact 8-bit copy (export_ecg_all.py)
+DEMO_ECG = Path("data/demo/ecg_demo.npz")    # older 99-patient subset, used only if ecg_all.npz is missing
 N_DAYS = 60
 DAY0 = dt.date(2026, 8, 17)          # display date of simulated day 0 (day 59 = 15 Oct 2026)
 
@@ -166,7 +167,7 @@ def load_everything():
 
 @st.cache_resource
 def ecg_source():
-    """Full PTB-XL test array if present (local), else the bundled demo subset (hosted app)."""
+    """Full PTB-XL test array if present (local), else the bundled compact copy of all test ECGs (hosted app)."""
     meta = pd.read_csv(PROC / "meta_test.csv")
     meta_row = pd.Series(np.arange(len(meta)), index=meta["ecg_id"])
     full, sal_path = PROC / "X_test.npy", Path("outputs/saliency/saliency_test.npy")
@@ -176,6 +177,13 @@ def ecg_source():
         return {"get": lambda pid: (np.asarray(X[meta_row[pid]], np.float32)[:, ::2],
                                     None if S is None else np.asarray(S[meta_row[pid]], np.float32)),
                 "has": lambda pid: pid in meta_row.index}
+    if ALL_ECG.exists():
+        d = np.load(ALL_ECG)
+        idx = {int(p): k for k, p in enumerate(d["ecg_id"])}
+        Q, SC, SQ = d["ecg_q"], d["ecg_scale"], d["sal_q"]
+        return {"get": lambda pid: (Q[idx[pid]].astype(np.float32) * SC[idx[pid]][:, None],
+                                    SQ[idx[pid]].astype(np.float32) / 255.0),
+                "has": lambda pid: pid in idx}
     if DEMO_ECG.exists():
         d = np.load(DEMO_ECG)
         idx = {int(p): k for k, p in enumerate(d["ecg_id"])}
@@ -630,8 +638,8 @@ def patient():
     with st.expander("12-lead clinic ECG (10 s, real PTB-XL recording)"):
         src = ecg_source()
         if src is None or not src["has"](pid):
-            st.info("This patient's ECG trace is not included in the hosted demo. Run locally with "
-                    "data/processed/X_test.npy to see every patient.")
+            st.info("ECG data file not found (data/demo/ecg_all.npz). Run export_ecg_all.py, "
+                    "or prepare_data.py for the full-precision data/processed/X_test.npy.")
         else:
             shade = st.toggle("Shade where the model's score is most sensitive (saliency)", value=True,
                               help="Not a diagnosis and not the model's reasoning: it shows where small changes in "

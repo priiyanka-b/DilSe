@@ -155,7 +155,7 @@ pip install -r requirements.txt
 streamlit run dashboard.py
 ```
 
-The repository includes the test predictions, the simulated wearable data, the locked settings and the real 12-lead ECGs of 99 demo patients (`data/demo/ecg_demo.npz`, 5 MB), so the app runs without downloading anything. To see every patient's ECG, download PTB-XL and run `prepare_data.py` to create `data/processed/X_test.npy` (257 MB, too large for GitHub); the app then uses it automatically.
+The repository includes the test predictions, the simulated wearable data, the locked settings and the real 12-lead ECGs of all 2,145 test patients in a compact 8-bit copy (`data/demo/ecg_all.npz`, 36 MB, made by `export_ecg_all.py`; largest error 0.0075 mV, far below what is visible on the plot), so the hosted app shows every patient's ECG without downloading anything. If you download PTB-XL and run `prepare_data.py` to create the full-precision `data/processed/X_test.npy` (257 MB, too large for GitHub), the app uses that instead.
 
 **Hosting it for free (Streamlit Community Cloud):** push the repository to GitHub, sign in at share.streamlit.io with GitHub, choose **Create app**, pick the repository, branch `main` and main file `dashboard.py`, and under Advanced settings choose Python 3.11. It installs `requirements.txt` (app only, no PyTorch) and gives a public link to paste above.
 
